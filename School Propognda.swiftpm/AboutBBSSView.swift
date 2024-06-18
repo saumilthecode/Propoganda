@@ -5,6 +5,9 @@ struct AboutBBSSView: View {
         NavigationStack{
             ScrollView{
                 VStack {
+                    Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
+                        .ignoresSafeArea()
+
                     Image("BBSSLogo")
                         .resizable()
                         .scaledToFit()
@@ -55,9 +58,7 @@ struct AboutBBSSView: View {
                         .font(.body)
                         .padding(.horizontal, 20)
                     
-                    Button(action: {
-                        // Add action for the button
-                    }) {
+                    NavigationLink(destination: ProgrammesView()) {
                         Text("Our Programmes")
                             .font(.title2)
                             .fontWeight(.bold)

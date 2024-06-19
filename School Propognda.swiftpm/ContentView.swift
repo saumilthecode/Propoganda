@@ -59,7 +59,12 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Main Page")
+            
         }
+        .foregroundColor(.black)
+
+        
     }
+
     
 }

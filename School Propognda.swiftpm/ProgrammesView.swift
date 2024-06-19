@@ -52,8 +52,3 @@ struct ProgrammesView: View {
     }
 }
 
-struct ProgrammesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgrammesView()
-    }
-}

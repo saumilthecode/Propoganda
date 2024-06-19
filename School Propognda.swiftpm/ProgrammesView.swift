@@ -37,7 +37,7 @@ struct ProgrammesView: View {
                 .padding(.trailing, 10)
 
                 NavigationLink(destination: CCAView()) {
-                    Text("Our CCA'S")
+                    Text("Our CCA")
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(.white)

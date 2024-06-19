@@ -6,6 +6,8 @@ struct MyApp: App {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(.dark)
+                .environmentObject(NavigationManager())
+
         }
     }
 }

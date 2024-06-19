@@ -3,6 +3,7 @@ import SwiftUI
 struct ScoreView: View {
     var questionsDone: Int
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var navigationManager: NavigationManager
     
     var body: some View {
         VStack {
@@ -15,6 +16,7 @@ struct ScoreView: View {
                 .padding()
             
             Button(action: {
+                navigationManager.shouldNavigateToContentView = true
                 dismiss()
             }) {
                 Text("Close")

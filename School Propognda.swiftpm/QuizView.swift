@@ -15,7 +15,11 @@ struct QuizView: View {
     @State var questionIndex = 0
     @State var QuestionsDone = Int(0)
     @State var selectedAnswer = Int(0)
+    @State var isCorrect = Bool(false)
     @State private var showingSheet = false
+    @State private var showingFeedback = false
+    @EnvironmentObject var navigationManager: NavigationManager
+
     
     var body: some View {
         
@@ -107,6 +111,13 @@ struct QuizView: View {
             .sheet(isPresented: $showingSheet) {
                 ScoreView(questionsDone: QuestionsDone)
             }
+            .alert(isPresented: $showingFeedback) {
+                Alert(
+                    title: Text(isCorrect ? "Correct!" : "Incorrect"),
+                    message: Text(isCorrect ? "You got it right!" : "The correct answer is \(questions[questionIndex].plainTextAnswer)"),
+                    dismissButton: .default(Text("Next Question"), action: moveToNextQuestion)
+                )
+            }
         }
         .onAppear {
             Progress = Double(QuestionsDone)
@@ -114,20 +125,21 @@ struct QuizView: View {
     }
     
     private func handleAnswer() {
-        if QuestionsDone + 1 == questions.count {
-            showingSheet = true
-        } else {
-            moveToNextQuestion()
+        isCorrect = (selectedAnswer == questions[questionIndex].Answer)
+        if isCorrect {
+            SPConfetti.startAnimating(.centerWidthToDown, particles: [.triangle, .arc], duration: 1)
         }
+        showingFeedback = true
     }
     
     private func moveToNextQuestion() {
-        QuestionsDone += 1
-        questionIndex = (questionIndex + 1) % questions.count
-        Progress = Double(QuestionsDone)
-        selectedAnswer = 0
-        SPConfetti.startAnimating(.centerWidthToDown, particles: [.triangle, .arc], duration: 1)
-
+        if QuestionsDone + 1 == questions.count {
+            showingSheet = true
+        } else {
+            QuestionsDone += 1
+            questionIndex = (questionIndex + 1) % questions.count
+            Progress = Double(QuestionsDone)
+            selectedAnswer = 0
+        }
     }
 }
-

@@ -19,7 +19,6 @@ struct QuizView: View {
     @State private var showingSheet = false
     @State private var showingFeedback = false
     @EnvironmentObject var navigationManager: NavigationManager
-
     
     var body: some View {
         
@@ -103,10 +102,6 @@ struct QuizView: View {
                 .offset(y: 0)
                 
                 // Progress Text
-                Text("You are \(QuestionsDone) / 5 questions done")
-                    .font(.headline)
-                    .padding()
-                    .offset(y: 50)
             }
             .sheet(isPresented: $showingSheet) {
                 ScoreView(questionsDone: QuestionsDone)
@@ -118,6 +113,7 @@ struct QuizView: View {
                     dismissButton: .default(Text("Next Question"), action: moveToNextQuestion)
                 )
             }
+            
         }
         .onAppear {
             Progress = Double(QuestionsDone)
@@ -125,7 +121,7 @@ struct QuizView: View {
     }
     
     private func handleAnswer() {
-        isCorrect = (selectedAnswer == questions[questionIndex].Answer)
+        isCorrect = selectedAnswer == questions[questionIndex].Answer
         if isCorrect {
             SPConfetti.startAnimating(.centerWidthToDown, particles: [.triangle, .arc], duration: 1)
         }
@@ -133,10 +129,10 @@ struct QuizView: View {
     }
     
     private func moveToNextQuestion() {
-        if QuestionsDone + 1 == questions.count {
+        QuestionsDone += 1
+        if QuestionsDone == questions.count {
             showingSheet = true
         } else {
-            QuestionsDone += 1
             questionIndex = (questionIndex + 1) % questions.count
             Progress = Double(QuestionsDone)
             selectedAnswer = 0

@@ -8,24 +8,24 @@ struct ScoreView: View {
     var body: some View {
         VStack {
             Text("Quiz Completed!")
-                .font(.largeTitle)
-                .padding()
+               .font(.largeTitle)
+               .padding()
             
             Text("You answered \(questionsDone) out of 5 questions")
-                .font(.title)
-                .padding()
+               .font(.title)
+               .padding()
             
             Button(action: {
-                navigationManager.shouldNavigateToContentView = true
+                navigationManager.navigateToContentView()
                 dismiss()
             }) {
                 Text("Close")
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                   .foregroundColor(.white)
+                   .padding()
+                   .background(Color.blue)
+                   .cornerRadius(10)
             }
         }
-        .padding()
+       .padding()
     }
 }

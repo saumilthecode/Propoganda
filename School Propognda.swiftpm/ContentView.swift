@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var navigationManager = NavigationManager()
-
     var body: some View {
         NavigationStack{
             ZStack {

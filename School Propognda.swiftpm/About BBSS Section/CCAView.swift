@@ -16,58 +16,58 @@ struct CCAView: View {
                 
                 Spacer()
                 
-                VStack(spacing: 20) {
-                    Button(action: {
-                        // Action for Sports & Games
-                    }) {
-                        Text("Sports & Games")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .padding(25)
-                            .frame(maxWidth: .infinity)
-                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(30)
-                    }
+                NavigationLink(destination: SportsView()){
+                    Text("Sports & Games")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(25)
+                        .frame(maxWidth: .infinity)
+                        .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                        .cornerRadius(30)
+                }
+                .padding(.horizontal, 40)
+                
+                
+                NavigationLink(destination: UniformedGroupsView()){
+                    Text("Uniformed Groups")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(25)
+                        .frame(maxWidth: .infinity)
+                        .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                        .cornerRadius(30)
+                }
+                .padding(.horizontal, 40)
+                
+                
+                
+                NavigationLink(destination: VisualArts()) {
+                    Text("Visual and Performing Arts")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(25)
+                        .frame(maxWidth: .infinity)
+                        .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                        .cornerRadius(30)
+                }
+                .padding(.horizontal, 40)
+                
+                
+                
+                NavigationLink(destination: ClubAndSocietyView()) {
+                    Text("Clubs and Societies")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(25)
+                        .frame(maxWidth: .infinity)
+                        .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                        .cornerRadius(30)
                     
-                    Button(action: {
-                        // Action for Uniformed Groups
-                    }) {
-                        Text("Uniformed Groups")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .padding(25)
-                            .frame(maxWidth: .infinity)
-                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(30)
-                    }
                     
-                    Button(action: {
-                        // Action for Visual and Performing Arts
-                    }) {
-                        Text("Visual and Performing Arts")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .padding(25)
-                            .frame(maxWidth: .infinity)
-                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(30)
-                    }
-                    
-                    Button(action: {
-                        // Action for Clubs and Societies
-                    }) {
-                        Text("Clubs and Societies")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .padding(25)
-                            .frame(maxWidth: .infinity)
-                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(30)
-                    }
                 }
                 .padding(.horizontal, 40)
                 

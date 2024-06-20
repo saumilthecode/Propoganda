@@ -21,8 +21,10 @@ struct CCAView: View {
                         // Action for Sports & Games
                     }) {
                         Text("Sports & Games")
+                            .font(.title2)
+                            .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .padding()
+                            .padding(25)
                             .frame(maxWidth: .infinity)
                             .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
                             .cornerRadius(30)
@@ -32,8 +34,10 @@ struct CCAView: View {
                         // Action for Uniformed Groups
                     }) {
                         Text("Uniformed Groups")
+                            .font(.title2)
+                            .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .padding()
+                            .padding(25)
                             .frame(maxWidth: .infinity)
                             .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
                             .cornerRadius(30)
@@ -43,8 +47,10 @@ struct CCAView: View {
                         // Action for Visual and Performing Arts
                     }) {
                         Text("Visual and Performing Arts")
+                            .font(.title2)
+                            .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .padding()
+                            .padding(25)
                             .frame(maxWidth: .infinity)
                             .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
                             .cornerRadius(30)
@@ -54,8 +60,10 @@ struct CCAView: View {
                         // Action for Clubs and Societies
                     }) {
                         Text("Clubs and Societies")
+                            .font(.title2)
+                            .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .padding()
+                            .padding(25)
                             .frame(maxWidth: .infinity)
                             .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
                             .cornerRadius(30)

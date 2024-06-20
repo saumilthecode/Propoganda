@@ -7,10 +7,13 @@ struct ProgrammesView: View {
                 .ignoresSafeArea()
             
             VStack {
+                Spacer()
                 Text("Our Programmes")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 30)
+                Spacer()
+                
                 VStack{
                     HStack {
                         Spacer()
@@ -70,6 +73,7 @@ struct ProgrammesView: View {
                     .padding(.top, 20)
                 }
                 .navigationTitle("Programmes")
+                Spacer()
             }
         }
         

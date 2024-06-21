@@ -17,7 +17,7 @@ let package = Package(
             name: "School Propoganda",
             targets: ["AppModule"],
             bundleIdentifier: "bbss.com.tk.sg",
-            teamIdentifier: "U4679NLU6P",
+            teamIdentifier: "XL5JK4F896",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .placeholder(icon: .cloud),
@@ -38,12 +38,23 @@ let package = Package(
                 .appTransportSecurity(configuration: .init(
                     exceptionDomains: [
                         .init(
+                            domainName: "datamall2.mytransport.sg/ltaodataservice/BusArrivalv2",
+                            includesSubdomains: true,
+                            exceptionAllowsInsecureHTTPLoads: true
+                        ),
+                        .init(
                             domainName: "http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2",
+                            includesSubdomains: true,
+                            exceptionAllowsInsecureHTTPLoads: true
+                        ),
+                        .init(
+                            domainName: "http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=43532",
                             includesSubdomains: true,
                             exceptionAllowsInsecureHTTPLoads: true
                         )
                     ]
-                ))
+                )),
+                .localNetwork(purposeString: "Get Bus Timeings", bonjourServiceTypes: ["Get API Requests"])
             ],
             appCategory: .education
         )

@@ -1,28 +1,52 @@
 import SwiftUI
 import MapKit
 
-struct HowToGetToBBSSView: View {
+struct MapView: UIViewRepresentable {
+    let coordinate = CLLocationCoordinate2D(latitude: 1.348628792170563, longitude: 103.7405316243571)
     
-    // Coordinates for Bukit Batok Secondary School
-    private let bbssLocation = CLLocationCoordinate2D(latitude: 1.35735, longitude: 103.7518)
+    let Field = CLLocationCoordinate2D(latitude: 1.3493218409464067, longitude: 103.74000762974674)
+
     
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 1.35735, longitude: 103.7518),
-        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-    )
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.mapType = .mutedStandard // Choose your map type here (standard, satellite, hybrid)
+        
+        // Apply custom map style if needed (not directly supported by SwiftUI Map)
+        // Example:
+        // mapView.overrideUserInterfaceStyle = .dark // Apply a dark map style
+        
+        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "Bukit Batok Secondary School"
+        mapView.addAnnotation(annotation)
+        
+        let Fieldm = MKPointAnnotation()
+        Fieldm.coordinate = Field
+        Fieldm.title = "Our Field"
+        mapView.addAnnotation(Fieldm)
+
+        
+        return mapView
+    }
     
-    var body: some View {
-        ZStack {
-            Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
-                .ignoresSafeArea()
-            
-            VStack {
-                Text("How to get to BBSS")
-                    .font(.title)
-                    .padding()
-            }
-        }
-        .foregroundColor(.black)
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        // Update the view if needed
     }
 }
 
+struct HowToGetToBBSSView: View {
+    var body: some View {
+        MapView()
+            .edgesIgnoringSafeArea(.all)
+    }
+}
+
+
+struct HowToGetToBBSSView_Previews: PreviewProvider {
+    static var previews: some View {
+        HowToGetToBBSSView()
+    }
+}

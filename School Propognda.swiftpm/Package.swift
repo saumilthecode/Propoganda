@@ -32,6 +32,19 @@ let package = Package(
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
             ],
+            capabilities: [
+                .incomingNetworkConnections(),
+                .outgoingNetworkConnections(),
+                .appTransportSecurity(configuration: .init(
+                    exceptionDomains: [
+                        .init(
+                            domainName: "http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2",
+                            includesSubdomains: true,
+                            exceptionAllowsInsecureHTTPLoads: true
+                        )
+                    ]
+                ))
+            ],
             appCategory: .education
         )
     ],

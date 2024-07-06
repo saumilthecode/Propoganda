@@ -84,3 +84,7 @@ struct AboutBBSSView: View {
         .foregroundColor(.black)
     }
 }
+
+#Preview {
+    AboutBBSSView()
+}

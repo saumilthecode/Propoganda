@@ -11,7 +11,7 @@ struct ScoreView: View {
                .font(.largeTitle)
                .padding()
             
-            Text("You answered \(questionsDone) out of 5 questions")
+            Text("You answered \(questionsDone) out of 9 questions")
                .font(.title)
                .padding()
             

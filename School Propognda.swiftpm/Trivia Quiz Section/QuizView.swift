@@ -8,7 +8,11 @@ struct QuizView: View {
         Questions(Question: "How many classes do we have in our entire school?", Option1: "7", Option2: "29", Option3: "28", Option4: "4", Answer: 2, plainTextAnswer: "29"),
         Questions(Question: "When was the school founded?", Option1: "1989", Option2: "2001", Option3: "2005", Option4: "1986", Answer: 4, plainTextAnswer: "1986"),
         Questions(Question: "Who is our current principal?", Option1: "Mdm Yaw", Option2: "Ms Shirley Lee", Option3: "Mr Phua Huat Chuan", Option4: "Mr Yazid", Answer: 2, plainTextAnswer: "Ms Shirley Lee"),
-        Questions(Question: "Daivik Rajesh", Option1: "Daivik Rajesh", Option2: "Daivik Rajesh", Option3: "Daivik Rajesh", Option4: "Daivik Rajesh", Answer: 3, plainTextAnswer: "Daivik Rajesh")
+        Questions(Question: "What is the BBSS Motto", Option1: "Be Our Best", Option2: "Be My Best", Option3: "Be Your Best", Option4: "Being The Best", Answer: 1, plainTextAnswer: "Be Our Best"),
+        Questions(Question: "What is one thing that is unique about BBSS", Option1: "Better Facilities", Option2: "Habits of Mind", Option3: "Co-Curricular Activities", Option4: "Unique Activities", Answer: 2, plainTextAnswer: "Habits of Mind"),
+        Questions(Question: "When does BBSS end on a normal day", Option1: "1:30", Option2: "2:00", Option3: "2:10", Option4: "3:00", Answer: 3, plainTextAnswer: "2:10"),
+        Questions(Question: "What is the closest school to BBSS?", Option1: "Bukit Batok Primary School", Option2: "Millenia Institute", Option3:"Eden School", Option4: "Princess Elizabeth Primary", Answer: 4, plainTextAnswer: "Princess Elizabeth Primary"),
+        Questions(Question: "What is special about the Bukit Batok Neighbourhood?", Option1: "First Dry Market", Option2:"First Wet Market", Option3: "BBSS", Option4:"Nothing", Answer: 1, plainTextAnswer: "First Dry Market")
     ]
     
     @State var Progress = Double(0.0)
@@ -29,14 +33,14 @@ struct QuizView: View {
             VStack {
                 VStack {
                     // Progress Bar
-                    ProgressView(value: Progress, total: 5)
+                    ProgressView(value: Progress, total: 9)
                         .progressViewStyle(.linear)
                         .tint(.blue)
                         .scaleEffect(x: 0.8, y: 0.3)
                         .padding()
                         .offset(y: -200)
                     
-                    Text("You are \(QuestionsDone) / 5 questions done")
+                    Text("You are \(QuestionsDone) / 9 questions done")
                         .bold()
                         .italic()
                         .offset(y: -400)

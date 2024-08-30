@@ -17,7 +17,7 @@ let package = Package(
             name: "School Propoganda",
             targets: ["AppModule"],
             bundleIdentifier: "bbss.com.tk.sg",
-            teamIdentifier: "XL5JK4F896",
+            teamIdentifier: "P6PV2R9443",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .placeholder(icon: .cloud),

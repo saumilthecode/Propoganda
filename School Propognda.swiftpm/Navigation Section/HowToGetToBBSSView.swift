@@ -45,19 +45,19 @@ struct MapView: UIViewRepresentable {
         let pepob = MKPointAnnotation()
         pepob.coordinate = PEPSoppbus
         pepob.title = "Opp Princess E Pr Sch Bus Stop"
-        pepob.subtitle = "43532"
+        pepob.subtitle = "43349"
         mapView.addAnnotation(pepob)
 
         let schb = MKPointAnnotation()
         schb.coordinate = schlbus
         schb.title = "Blk 168 Bus Stop"
-        schb.subtitle = "43533"
+        schb.subtitle = "43351"
         mapView.addAnnotation(schb)
 
         let schlob = MKPointAnnotation()
         schlob.coordinate = schloppbuss
         schlob.title = "Blk 169 Bus Stop"
-        schlob.subtitle = "43534"
+        schlob.subtitle = "43359"
         mapView.addAnnotation(schlob)
         
         return mapView
@@ -75,12 +75,17 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-            if let subtitle = view.annotation?.subtitle, let busStopCode = subtitle {
+            if let title = view.annotation?.title, title == "Bukit Batok Secondary School" {
+                let destination = MKMapItem(placemark: MKPlacemark(coordinate: view.annotation!.coordinate))
+                destination.name = "Bukit Batok Secondary School"
+                destination.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+            } else if let subtitle = view.annotation?.subtitle, let busStopCode = subtitle {
                 parent.selectedBusStopCode = busStopCode
                 parent.isShowingBusTimingSheet = true
             }
         }
     }
+
 }
 
 struct HowToGetToBBSSView: View {

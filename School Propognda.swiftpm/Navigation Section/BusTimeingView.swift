@@ -1,39 +1,59 @@
 import SwiftUI
 import MapKit
+import Foundation
 
 // Define your API Manager class here
 
 struct BusTimingView: View {
     @StateObject private var apiManager = APImanagerView()
-    @State private var busStopCode: String
+    let busStopCode: String
+    @State private var isLoading = true
     
     init(busStopCode: String) {
-        _busStopCode = State(initialValue: busStopCode)
+        self.busStopCode = busStopCode
     }
     
     var body: some View {
         VStack {
-            TextField("Enter Bus Stop Code", text: $busStopCode)
+            Text("Bus Stop: \(busStopCode)")
+                .font(.headline)
                 .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.numberPad)
             
-            Button(action: {
-                apiManager.getBusTiming(busStopCode: busStopCode)
-            }) {
-                Text("Get Bus Timing")
+            if isLoading {
+                Text("Loading...")
+                    .font(.subheadline)
                     .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+            } else if apiManager.busTimings.isEmpty {
+                Text("No bus times available.")
+                    .font(.subheadline)
+                    .padding()
+            } else {
+                List(apiManager.busTimings, id: \.ServiceNo) { service in
+                    VStack(alignment: .leading) {
+                        Text("Service: \(service.ServiceNo)")
+                            .font(.headline)
+                        
+                        Text(apiManager.calculateTimeDifference(from: service.NextBus.EstimatedArrival))
+                        
+                        if let nextBus2 = service.NextBus2 {
+                            Text(apiManager.calculateTimeDifference(from: nextBus2.EstimatedArrival))
+                        }
+                        
+                        if let nextBus3 = service.NextBus3 {
+                            Text(apiManager.calculateTimeDifference(from: nextBus3.EstimatedArrival))
+                        }
+                    }
+                }
+            }
+        }
+        .onAppear {
+            apiManager.getBusTiming(busStopCode: busStopCode)
+            
+            // Simulate network delay and then stop loading
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                isLoading = false
             }
         }
         .padding()
-    }
-}
-
-struct BusTimingView_Previews: PreviewProvider {
-    static var previews: some View {
-        BusTimingView(busStopCode: "43531")
     }
 }

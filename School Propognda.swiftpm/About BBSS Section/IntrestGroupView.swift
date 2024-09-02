@@ -22,7 +22,7 @@ struct IntrestGroupView: View {
                     ClubButton(title: "Hack Club!!!")
                     ClubButton(title: "Crochet SIL Interest Group")
                 }
-
+                
             }
         }
     }

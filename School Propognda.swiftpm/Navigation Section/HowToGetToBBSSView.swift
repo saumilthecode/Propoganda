@@ -47,13 +47,13 @@ struct MapView: UIViewRepresentable {
         pepob.title = "Opp Princess E Pr Sch Bus Stop"
         pepob.subtitle = "43349"
         mapView.addAnnotation(pepob)
-
+        
         let schb = MKPointAnnotation()
         schb.coordinate = schlbus
         schb.title = "Blk 168 Bus Stop"
         schb.subtitle = "43351"
         mapView.addAnnotation(schb)
-
+        
         let schlob = MKPointAnnotation()
         schlob.coordinate = schloppbuss
         schlob.title = "Blk 169 Bus Stop"
@@ -85,7 +85,7 @@ struct MapView: UIViewRepresentable {
             }
         }
     }
-
+    
 }
 
 struct HowToGetToBBSSView: View {

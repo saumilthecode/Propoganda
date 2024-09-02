@@ -13,10 +13,9 @@ struct TriviaQuizView: View {
                 
                 Text("""
                     Rules:
-                    1) You will earn 400 points per question correctly answered
-                    2) You lose 100 points per question incorrectly answered
-                    3) Do not search up the answers on google
-                    4) Have fun with the quiz!
+                    1) You will earn 1 points per question correctly answered
+                    2) Do not search up the answers on google
+                    3) Have fun with the quiz!
                     """)
                 
                 NavigationLink(destination: QuizView()) {

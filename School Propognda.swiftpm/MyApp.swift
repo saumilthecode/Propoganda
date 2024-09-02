@@ -7,7 +7,7 @@ struct MyApp: App {
             ContentView()
                 .preferredColorScheme(.light)
                 .environmentObject(NavigationManager())
-
+            
         }
     }
 }

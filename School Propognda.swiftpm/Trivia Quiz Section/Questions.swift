@@ -8,5 +8,5 @@ struct Questions {
     var Option4 : String
     var Answer : Int
     var plainTextAnswer : String
-
+    
 }

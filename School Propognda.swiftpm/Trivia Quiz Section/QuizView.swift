@@ -18,6 +18,7 @@ struct QuizView: View {
     @State var Progress = Double(0.0)
     @State var questionIndex = 0
     @State var QuestionsDone = Int(0)
+    @State var correctAnswers = Int(0)
     @State var selectedAnswer = Int(0)
     @State var isCorrect = Bool(false)
     @State private var showingSheet = false
@@ -25,14 +26,12 @@ struct QuizView: View {
     @EnvironmentObject var navigationManager: NavigationManager
     
     var body: some View {
-        
         ZStack {
             Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
                 VStack {
-                    // Progress Bar
                     ProgressView(value: Progress, total: 9)
                         .progressViewStyle(.linear)
                         .tint(.blue)
@@ -47,14 +46,12 @@ struct QuizView: View {
                         .padding(50)
                 }
                 
-                // Question Text
                 Text(questions[questionIndex].Question)
                     .font(.title2)
                     .bold()
                     .padding()
                     .offset(y: -100)
                 
-                // Option Buttons
                 HStack(spacing: 20) {
                     Button(action: {
                         selectedAnswer = 1
@@ -105,10 +102,10 @@ struct QuizView: View {
                 }
                 .offset(y: 0)
                 
-                // Progress Text
             }
             .sheet(isPresented: $showingSheet) {
-                ScoreView(questionsDone: QuestionsDone)
+                ScoreView(questionsCorrect: correctAnswers)  // Pass correct answers to ScoreView
+                    .environmentObject(navigationManager)
             }
             .alert(isPresented: $showingFeedback) {
                 Alert(
@@ -117,7 +114,6 @@ struct QuizView: View {
                     dismissButton: .default(Text("Next Question"), action: moveToNextQuestion)
                 )
             }
-            
         }
         .onAppear {
             Progress = Double(QuestionsDone)
@@ -127,6 +123,7 @@ struct QuizView: View {
     private func handleAnswer() {
         isCorrect = selectedAnswer == questions[questionIndex].Answer
         if isCorrect {
+            correctAnswers += 1
             SPConfetti.startAnimating(.centerWidthToDown, particles: [.triangle, .arc], duration: 1)
         }
         showingFeedback = true
@@ -142,4 +139,7 @@ struct QuizView: View {
             selectedAnswer = 0
         }
     }
+}
+#Preview {
+    QuizView()
 }

@@ -3,11 +3,11 @@ import WebKit
 
 struct WebView: UIViewRepresentable {
     let url: URL
-
+    
     func makeUIView(context: Context) -> WKWebView {
         return WKWebView()
     }
-
+    
     func updateUIView(_ webView: WKWebView, context: Context) {
         let request = URLRequest(url: url)
         webView.load(request)
@@ -28,7 +28,7 @@ struct ClubAndSocietyView: View {
                         .foregroundColor(Color.black)
                         .padding(.top, 40)
                         .foregroundColor(Color.black)
-
+                    
                     HStack(spacing: 20) {
                         NavigationLink(destination: MediaClubView()) {
                             ClubButton(title: "Media Club")
@@ -73,7 +73,7 @@ struct MediaClubView: View {
             ZStack {
                 Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
-
+                
                 WebView(url: URL(string: "https://docs.google.com/presentation/d/1edqtTUw0ETCqGdThSJ2WIDltXFw0dj3k/pub?start=true&loop=true&delayms=3000")!)
             }
             .navigationTitle("Media Club Presentation")
@@ -89,7 +89,7 @@ struct RoboticsClubView: View {
             ZStack {
                 Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
-
+                
                 WebView(url: URL(string: "https://www.bukitbatoksec.moe.edu.sg/clubs/robotics-club/")!)
             }
             .navigationTitle("Robotics Club Website")
@@ -105,7 +105,7 @@ struct OneEarthClubView: View {
             ZStack {
                 Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
-
+                
                 WebView(url: URL(string: "https://www.bukitbatoksec.moe.edu.sg/clubs/one-earth-club/")!)
             }
             .navigationTitle("One Earth Club Website")
@@ -121,7 +121,7 @@ struct DramaAndDebateView: View {
             ZStack {
                 Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
-
+                
                 WebView(url: URL(string: "https://docs.google.com/presentation/d/1mVCVulEWlPL6hNHOzVXMC9U5hO6R8WNOw4vXWfYGeps/pub?start=true&loop=true&delayms=3000")!)
             }
             .navigationTitle("ELDDS Presentation")

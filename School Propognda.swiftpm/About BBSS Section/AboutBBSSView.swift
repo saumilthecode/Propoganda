@@ -31,11 +31,11 @@ struct AboutBBSSView: View {
                         
                         Text("To nurture BBSSians to be ")
                             .font(.body)
-                            + Text("self-directed learners")
-                                .font(.body)
-                                .foregroundColor(.blue)
-                            + Text(" with an abundance mentality.")
-                                .font(.body)
+                        + Text("self-directed learners")
+                            .font(.body)
+                            .foregroundColor(.blue)
+                        + Text(" with an abundance mentality.")
+                            .font(.body)
                         
                         Text("Our Values")
                             .font(.title)

@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D2CA5DAE2C9EF33500DCF2CE /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = D2CA5DAD2C9EF33500DCF2CE /* SPConfetti */; };
-		D2CA5DB12C9EF34200DCF2CE /* Swifty360Player in Frameworks */ = {isa = PBXBuildFile; productRef = D2CA5DB02C9EF34200DCF2CE /* Swifty360Player */; };
-		D2CA5DB42C9EF34D00DCF2CE /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = D2CA5DB32C9EF34D00DCF2CE /* XCDYouTubeKit */; };
-		D2CA5DB92C9F00CE00DCF2CE /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = D2CA5DB82C9F00CE00DCF2CE /* YouTubeKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +28,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2CA5DAE2C9EF33500DCF2CE /* SPConfetti in Frameworks */,
-				D2CA5DB12C9EF34200DCF2CE /* Swifty360Player in Frameworks */,
-				D2CA5DB42C9EF34D00DCF2CE /* XCDYouTubeKit in Frameworks */,
-				D2CA5DB92C9F00CE00DCF2CE /* YouTubeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,9 +71,6 @@
 			name = "About BBSS";
 			packageProductDependencies = (
 				D2CA5DAD2C9EF33500DCF2CE /* SPConfetti */,
-				D2CA5DB02C9EF34200DCF2CE /* Swifty360Player */,
-				D2CA5DB32C9EF34D00DCF2CE /* XCDYouTubeKit */,
-				D2CA5DB82C9F00CE00DCF2CE /* YouTubeKit */,
 			);
 			productName = "About BBSS";
 			productReference = D2CA5D662C9EF14600DCF2CE /* About BBSS.app */;
@@ -111,9 +102,6 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				D2CA5DAC2C9EF33500DCF2CE /* XCRemoteSwiftPackageReference "SPConfetti" */,
-				D2CA5DAF2C9EF34200DCF2CE /* XCRemoteSwiftPackageReference "Swifty360Player" */,
-				D2CA5DB22C9EF34D00DCF2CE /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */,
-				D2CA5DB72C9F00CE00DCF2CE /* XCRemoteSwiftPackageReference "YouTubeKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D2CA5D672C9EF14600DCF2CE /* Products */;
@@ -374,30 +362,6 @@
 				minimumVersion = 1.4.2;
 			};
 		};
-		D2CA5DAF2C9EF34200DCF2CE /* XCRemoteSwiftPackageReference "Swifty360Player" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/abdullahselek/Swifty360Player.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.7;
-			};
-		};
-		D2CA5DB22C9EF34D00DCF2CE /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/0xced/XCDYouTubeKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.15.2;
-			};
-		};
-		D2CA5DB72C9F00CE00DCF2CE /* XCRemoteSwiftPackageReference "YouTubeKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/b5i/YouTubeKit";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -405,21 +369,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2CA5DAC2C9EF33500DCF2CE /* XCRemoteSwiftPackageReference "SPConfetti" */;
 			productName = SPConfetti;
-		};
-		D2CA5DB02C9EF34200DCF2CE /* Swifty360Player */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D2CA5DAF2C9EF34200DCF2CE /* XCRemoteSwiftPackageReference "Swifty360Player" */;
-			productName = Swifty360Player;
-		};
-		D2CA5DB32C9EF34D00DCF2CE /* XCDYouTubeKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D2CA5DB22C9EF34D00DCF2CE /* XCRemoteSwiftPackageReference "XCDYouTubeKit" */;
-			productName = XCDYouTubeKit;
-		};
-		D2CA5DB82C9F00CE00DCF2CE /* YouTubeKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D2CA5DB72C9F00CE00DCF2CE /* XCRemoteSwiftPackageReference "YouTubeKit" */;
-			productName = YouTubeKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

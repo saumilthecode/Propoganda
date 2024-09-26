@@ -1,5 +1,5 @@
 {
-  "originHash" : "64ad6a81e7fe897fd01534d7f4ec0275ef81076b55694d83046bff97709abf52",
+  "originHash" : "85539a60a4141a0288d7899335e678953eac0191838b555c286a1af07f4b36ea",
   "pins" : [
     {
       "identity" : "spconfetti",
@@ -8,33 +8,6 @@
       "state" : {
         "revision" : "0896bbf9ec20eaf125598d0f36ee5f1049117e18",
         "version" : "1.4.2"
-      }
-    },
-    {
-      "identity" : "swifty360player",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/abdullahselek/Swifty360Player.git",
-      "state" : {
-        "revision" : "a3a9249e34ce1bdcfa20c0780fdbec26a6396ddb",
-        "version" : "0.2.7"
-      }
-    },
-    {
-      "identity" : "xcdyoutubekit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/0xced/XCDYouTubeKit.git",
-      "state" : {
-        "revision" : "23f765941b36d6d28215ab81a37af1039d29138b",
-        "version" : "2.15.2"
-      }
-    },
-    {
-      "identity" : "youtubekit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/b5i/YouTubeKit",
-      "state" : {
-        "branch" : "main",
-        "revision" : "e16b297e495a1cc150c73dbf703f53e7b87d929d"
       }
     }
   ],

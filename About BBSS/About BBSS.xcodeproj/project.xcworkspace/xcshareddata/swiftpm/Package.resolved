@@ -1,4 +1,5 @@
 {
+  "originHash" : "64ad6a81e7fe897fd01534d7f4ec0275ef81076b55694d83046bff97709abf52",
   "pins" : [
     {
       "identity" : "spconfetti",
@@ -26,7 +27,16 @@
         "revision" : "23f765941b36d6d28215ab81a37af1039d29138b",
         "version" : "2.15.2"
       }
+    },
+    {
+      "identity" : "youtubekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/b5i/YouTubeKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "e16b297e495a1cc150c73dbf703f53e7b87d929d"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

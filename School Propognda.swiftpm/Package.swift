@@ -60,13 +60,17 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/ivanvorobei/SPConfetti", "1.4.2"..<"2.0.0")
+        .package(url: "https://github.com/ivanvorobei/SPConfetti", "1.4.2"..<"2.0.0"),
+        .package(url: "https://github.com/abdullahselek/Swifty360Player.git", "0.2.7"..<"1.0.0"),
+        .package(url: "https://github.com/0xced/XCDYouTubeKit.git", "2.15.2"..<"3.0.0")
     ],
     targets: [
         .executableTarget(
             name: "AppModule",
             dependencies: [
-                .product(name: "SPConfetti", package: "SPConfetti")
+                .product(name: "SPConfetti", package: "SPConfetti"),
+                .product(name: "Swifty360Player", package: "swifty360player"),
+                .product(name: "XCDYouTubeKit", package: "xcdyoutubekit")
             ],
             path: ".",
             swiftSettings: [

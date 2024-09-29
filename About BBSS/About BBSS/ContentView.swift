@@ -1,9 +1,11 @@
 import SwiftUI
+import Shiny
 
 struct ContentView: View {
     @StateObject var navigationManager = NavigationManager()
+    
     var body: some View {
-        NavigationStack{
+        NavigationStack {
             ZStack {
                 Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
@@ -46,12 +48,6 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: TriviaQuizView(), isActive: $navigationManager.shouldNavigateToQuizView) {
-                        EmptyView()
-                    }
-                    NavigationLink(destination: ContentView(), isActive: $navigationManager.shouldNavigateToContentView) {
-                        EmptyView()
-                    }
                     
                     NavigationLink(destination: TriviaQuizView()) {
                         Text("Trivia Quiz!")
@@ -63,13 +59,39 @@ struct ContentView: View {
                             .cornerRadius(30)
                     }
                     .padding(.bottom, 30)
+                    
                     Spacer()
+                }
+                
+                VStack {
+                    Spacer()
+                    Text("Made by Saumil, Zenneth and Daivik")
+                        .font(.title)
+                        .fontWeight(.bold).shiny(Gradient(colors: [.gradientcolour1, .gradientcolour2 , .gradientcolour3, .gradientcolour4, .hackClub]))
+                    NavigationLink(destination:HackClubView()) {
+                        HStack {
+                            Text("A product of")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .shiny(Gradient(colors: [.gradientcolour1, .gradientcolour2 , .gradientcolour3, .gradientcolour4]))
+                            Text("Hack Club BBSS")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .shiny(.glossy(.hackClub))
+                            
+                        }
+                    }
                 }
             }
             .navigationTitle("Main Page")
-            
         }
         .foregroundColor(.black)
         .environmentObject(navigationManager)
     }
 }
+
+#Preview{
+    ContentView()
+}
+
+

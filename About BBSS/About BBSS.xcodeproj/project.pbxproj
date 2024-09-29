@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D2CA5DAE2C9EF33500DCF2CE /* SPConfetti in Frameworks */ = {isa = PBXBuildFile; productRef = D2CA5DAD2C9EF33500DCF2CE /* SPConfetti */; };
+		D2FD9DCE2CA7B21F0036F8BE /* Shiny in Frameworks */ = {isa = PBXBuildFile; productRef = D2FD9DCD2CA7B21F0036F8BE /* Shiny */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2FD9DCE2CA7B21F0036F8BE /* Shiny in Frameworks */,
 				D2CA5DAE2C9EF33500DCF2CE /* SPConfetti in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +73,7 @@
 			name = "About BBSS";
 			packageProductDependencies = (
 				D2CA5DAD2C9EF33500DCF2CE /* SPConfetti */,
+				D2FD9DCD2CA7B21F0036F8BE /* Shiny */,
 			);
 			productName = "About BBSS";
 			productReference = D2CA5D662C9EF14600DCF2CE /* About BBSS.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				D2CA5DAC2C9EF33500DCF2CE /* XCRemoteSwiftPackageReference "SPConfetti" */,
+				D2FD9DCC2CA7B21F0036F8BE /* XCRemoteSwiftPackageReference "shiny" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D2CA5D672C9EF14600DCF2CE /* Products */;
@@ -362,6 +366,14 @@
 				minimumVersion = 1.4.2;
 			};
 		};
+		D2FD9DCC2CA7B21F0036F8BE /* XCRemoteSwiftPackageReference "shiny" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maustinstar/shiny.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -369,6 +381,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2CA5DAC2C9EF33500DCF2CE /* XCRemoteSwiftPackageReference "SPConfetti" */;
 			productName = SPConfetti;
+		};
+		D2FD9DCD2CA7B21F0036F8BE /* Shiny */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2FD9DCC2CA7B21F0036F8BE /* XCRemoteSwiftPackageReference "shiny" */;
+			productName = Shiny;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

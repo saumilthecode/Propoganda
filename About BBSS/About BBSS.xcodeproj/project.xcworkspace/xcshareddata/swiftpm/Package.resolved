@@ -1,6 +1,15 @@
 {
-  "originHash" : "85539a60a4141a0288d7899335e678953eac0191838b555c286a1af07f4b36ea",
+  "originHash" : "30fafd8b355c99374450529189d3232fcd46f6b4594869a26883d594d7591be0",
   "pins" : [
+    {
+      "identity" : "shiny",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maustinstar/shiny.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "862360b8ab6b9ea9eb1156569a30f154b22625a5"
+      }
+    },
     {
       "identity" : "spconfetti",
       "kind" : "remoteSourceControl",

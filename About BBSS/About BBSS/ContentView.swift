@@ -67,17 +67,16 @@ struct ContentView: View {
                     Spacer()
                     Text("Made by Saumil, Zenneth and Daivik")
                         .font(.title)
-                        .fontWeight(.bold).shiny(Gradient(colors: [.gradientcolour1, .gradientcolour2 , .gradientcolour3, .gradientcolour4, .hackClub]))
+                        .fontWeight(.bold)
                     NavigationLink(destination:HackClubView()) {
                         HStack {
                             Text("A product of")
                                 .font(.title)
                                 .fontWeight(.bold)
-                                .shiny(Gradient(colors: [.gradientcolour1, .gradientcolour2 , .gradientcolour3, .gradientcolour4]))
                             Text("Hack Club BBSS")
                                 .font(.title)
                                 .fontWeight(.bold)
-                                .shiny(.glossy(.hackClub))
+                                .foregroundStyle(.blue)
                             
                         }
                     }

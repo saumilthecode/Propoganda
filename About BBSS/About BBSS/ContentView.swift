@@ -19,44 +19,46 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    HStack {
+                    HStack(spacing: 20) { // Reduced space between buttons
                         Spacer()
+
                         NavigationLink(destination: AboutBBSSView()) {
                             Text("About BBSS")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
-                                .padding(25)
+                                .padding()
+                                .frame(width: 300, height: 50) // Adjusted width and height for better size control
                                 .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                                .cornerRadius(30)
+                                .cornerRadius(20)
                         }
-                        .padding(.trailing)
-                        
                         Spacer()
                         NavigationLink(destination: HowToGetToBBSSView()) {
                             Text("How to get to BBSS")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
-                                .padding(25)
+                                .padding()
+                                .frame(width: 300, height: 50) // Matched width and height for consistency
                                 .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                                .cornerRadius(30)
+                                .cornerRadius(20)
                         }
-                        .padding(.trailing)
                         Spacer()
+
                     }
+                    .padding(.top, 20) // Added padding to top for better spacing
                     
                     Spacer()
-                    
                     
                     NavigationLink(destination: TriviaQuizView()) {
                         Text("Trivia Quiz!")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .padding(25)
+                            .padding()
+                            .frame(width: 200, height: 50) // Adjusted button size for single button
                             .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(30)
+                            .cornerRadius(20)
                     }
                     .padding(.bottom, 30)
                     
@@ -73,16 +75,21 @@ struct ContentView: View {
                             Text("A product of")
                                 .font(.title)
                                 .fontWeight(.bold)
-                            Text("Hack Club BBSS")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.blue)
-                            
+                            HStack{
+                                Text("Hack Club BBSS")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.blue)
+                                Image("HC LOGO")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxWidth: 40)
+                            }
                         }
                     }
                 }
             }
-            .navigationTitle("Main Page")
+//            .navigationTitle("Main Page")
         }
         .foregroundColor(.black)
         .environmentObject(navigationManager)
@@ -92,5 +99,3 @@ struct ContentView: View {
 #Preview{
     ContentView()
 }
-
-

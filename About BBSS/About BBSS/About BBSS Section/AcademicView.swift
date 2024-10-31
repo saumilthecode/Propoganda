@@ -19,7 +19,7 @@ struct AcademicView: View {
                                     .fontWeight(.bold)
                                     .foregroundColor(Color(UIColor(red: 100/255, green: 80/255, blue: 20/255, alpha: 1.0)))
                                 
-                                Text("In BBSS, the following subjects are offered as 'O' / 'N(A)' / 'N(T)' level examinable subjects, grouped by department.")
+                                Text("In BBSS, the following subjects are offered as 'O' / 'N(A)' / 'N(T)' level examinable subjects.")
                                     .font(.headline)
                                     .foregroundColor(.gray)
                             }

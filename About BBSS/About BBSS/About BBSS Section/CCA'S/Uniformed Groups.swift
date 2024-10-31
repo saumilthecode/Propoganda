@@ -14,10 +14,30 @@ struct UniformedGroupsView: View {
                         .padding(.top, 40)
                     HStack(spacing: 20) {
                         NavigationLink(destination: NCCLandView()) {
-                            ClubButton(title: "NCC (Land)")
+//                            ClubButton(title: " ***NCC (Land) *** + NCC (Sea)")
+                            Text("`NCC (Land)` + NCC (Sea)")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .padding(25)
+                                .frame(maxWidth: .infinity)
+                                .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                                .cornerRadius(30)
+                                .padding(.horizontal)
+
                         }
                         NavigationLink(destination: NCCSeaView()) {
-                            ClubButton(title: "NCC (Sea)")
+//                            ClubButton(title: "NCC (Land) + ***NCC (Sea)*** ")
+                            Text("NCC (Land) + `NCC (Sea)`")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .padding(25)
+                                .frame(maxWidth: .infinity)
+                                .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                                .cornerRadius(30)
+                                .padding(.horizontal)
+
                         }
                     }
                     HStack(spacing: 20) {

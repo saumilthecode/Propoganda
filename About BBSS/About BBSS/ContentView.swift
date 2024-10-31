@@ -7,21 +7,24 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
+                    Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
                 
                 VStack {
-                    Image("BBSS")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300, height: 300)
-                        .padding(.top, 50)
+                    NavigationLink(destination:propoganda()){
+                        Image("BBSS")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 300, height: 300)
+                            .padding(.top, 50)
+                            .shadow(radius: 20)
+                    }
                     
                     Spacer()
                     
                     HStack(spacing: 20) { // Reduced space between buttons
                         Spacer()
-
+                        
                         NavigationLink(destination: AboutBBSSView()) {
                             Text("About BBSS")
                                 .font(.title2)
@@ -44,14 +47,17 @@ struct ContentView: View {
                                 .cornerRadius(20)
                         }
                         Spacer()
-
+                        
                     }
                     .padding(.top, 20) // Added padding to top for better spacing
                     
                     Spacer()
                     
-                    NavigationLink(destination: TriviaQuizView()) {
-                        Text("Trivia Quiz!")
+                    //                    NavigationLink(destination: TriviaQuizView()) {
+                    
+                    NavigationLink(destination: FeedBack()) {
+                        
+                        Text("Feedback!")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -89,7 +95,7 @@ struct ContentView: View {
                     }
                 }
             }
-//            .navigationTitle("Main Page")
+            //            .navigationTitle("Main Page")
         }
         .foregroundColor(.black)
         .environmentObject(navigationManager)
@@ -98,4 +104,39 @@ struct ContentView: View {
 
 #Preview{
     ContentView()
+}
+
+
+
+struct propoganda: View {
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
+                    .ignoresSafeArea()
+                
+                WebView(url: URL(string:"https://www.moe.gov.sg/schoolfinder/schooldetail?schoolname=bukit-batok-secondary-school")!)
+            }
+            .navigationTitle("BBSS")
+            .foregroundColor(Color.black)
+            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+
+
+struct FeedBack: View {
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
+                    .ignoresSafeArea()
+                
+                WebView(url: URL(string:"https://docs.google.com/forms/d/11EIaaQngAFi9lIY8X2p1YzdfFGoUKArIyZZ4KjiaI3c/viewform")!)
+            }
+            .navigationTitle("BBSS")
+            .foregroundColor(Color.black)
+            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
 }

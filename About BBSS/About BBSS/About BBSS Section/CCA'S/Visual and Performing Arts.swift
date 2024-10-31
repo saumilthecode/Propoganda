@@ -7,7 +7,7 @@ struct VisualArts: View {
                 Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
                 VStack(spacing: 30) {
-                    Text("Visual and Performing Arts")
+                    Text("Performing Arts")
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(Color.black)
@@ -32,6 +32,11 @@ struct VisualArts: View {
                         NavigationLink(destination:MalayDanceView()){
                             ClubButton(title: "Malay Dance")
                         }
+                        
+                        NavigationLink(destination: DramaAndDebateView()) {
+                            ClubButton(title: "English Language Drama & Debating")
+                        }
+                        
                     }
                 }
             }

@@ -41,10 +41,14 @@ struct ClubAndSocietyView: View {
                         NavigationLink(destination: OneEarthClubView()) {
                             ClubButton(title: "One Earth Club")
                         }
-                        NavigationLink(destination: DramaAndDebateView()) {
-                            ClubButton(title: "English Language Drama & Debating")
+                        NavigationLink(destination: GymView()){
+                            ClubButton(title: "Gym Club")
+                            
                         }
+                        
                     }
+                    
+                    
                 }
             }
         }
@@ -130,4 +134,23 @@ struct DramaAndDebateView: View {
         }
     }
 }
+
+
+struct GymView: View {
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
+                    .ignoresSafeArea()
+                
+                WebView(url: URL(string: "https://www.bukitbatoksec.moe.edu.sg/clubs/gym-club/")!)
+            }
+            .navigationTitle("Robotics Club Website")
+            .foregroundColor(Color.black)
+            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+
+
 

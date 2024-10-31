@@ -13,13 +13,18 @@ struct AboutBBSSView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 400, height: 200)
-                            .padding(.top, 30)
                         
+                        Image("Sideshow_1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 400, height: 200)
+
+
                         Text("Our Vision")
                             .font(.title)
                             .fontWeight(.bold)
-                            .padding(.top, 20)
                         
+
                         Text("Bukit Batok Secondary School is a premier school that provides quality holistic education to every BBSSian.")
                             .font(.body)
                             .padding(.horizontal, 20)

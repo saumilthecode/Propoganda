@@ -7,7 +7,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                    Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
+                Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
                 
                 VStack {
@@ -53,11 +53,12 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    //                    NavigationLink(destination: TriviaQuizView()) {
-                    
-                    NavigationLink(destination: FeedBack()) {
+                    NavigationLink(destination: TriviaQuizView()) {
                         
-                        Text("Feedback!")
+                        //                    NavigationLink(destination: FeedBack()) {
+                        
+                        //                        Text("Feedback!")
+                        Text("Trivia Quiz")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(.white)

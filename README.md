@@ -20,7 +20,7 @@ Also a product of BBSS Hack Club.
 # Downloadable in the [App Store](!https://apps.apple.com/us/app/about-bbss/id6737804170)
 https://apps.apple.com/us/app/about-bbss/id6737804170
 
-
+video recording demo! https://cloud-3guiih2k1-hack-club-bot.vercel.app/0screen_recording_2024-11-12_at_1.33.56___pm.mp4
 # Repo Layout
 
 Propoganda/
@@ -38,5 +38,5 @@ Propoganda/
 ├── screenshot2.png
 ├── screenshot3.png
 ├── screenshot4.png
-├── screenshot5.png
+├── screenshot5.png    #screenshots are abit old and adding new ones nuked my local repo so i am not perusing it
 └── .DS_Store

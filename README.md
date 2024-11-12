@@ -23,6 +23,8 @@ https://apps.apple.com/us/app/about-bbss/id6737804170
 video recording demo! https://cloud-3guiih2k1-hack-club-bot.vercel.app/0screen_recording_2024-11-12_at_1.33.56___pm.mp4
 # Repo Layout
 
+```plaintext
+
 Propoganda/
 ├── About BBSS/      # Main Xcode Project
 │   ├── About BBSS.xcodeproj     # Generic xcode stuff

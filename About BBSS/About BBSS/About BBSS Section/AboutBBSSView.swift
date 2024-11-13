@@ -12,12 +12,12 @@ struct AboutBBSSView: View {
                         Image("BBSSLogo")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 400, height: 200)
+                            .frame(width: 400, height: 150)
                         
                         Image("Sideshow_1")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 400, height: 200)
+                            .frame(width: 400, height: 150)
 
 
                         Text("Our Vision")

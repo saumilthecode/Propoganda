@@ -189,7 +189,7 @@ struct IntrestGroupView: View {
                         
                         InterestCard(
                             title: "Dikir Barat",
-                            description: "Dikir Barat is a traditional Malaysian musical and performance art form, often involving a seated chorus and a lead vocalist (tukang karut)...",
+                            description: "Dikir Barat is a traditional Malaysian musical and performance art form, often involving a seated chorus and a lead vocalist! Click here to view our Dikir Barat's perforamnce!",
                             imageName: "dikir",
                             websiteURL: "https://drive.google.com/file/d/15myOdJKjrV9kofCXfVxV-S7kfPxQtTGg/view?usp=sharing"
                         )

@@ -18,20 +18,23 @@ struct AcademicView: View {
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                                     .foregroundColor(Color(UIColor(red: 100/255, green: 80/255, blue: 20/255, alpha: 1.0)))
+                                    .fixedSize(horizontal: false, vertical: true) // Allow vertical growth
                                 
                                 Text("In BBSS, the following subjects are offered as 'O' / 'N(A)' / 'N(T)' level examinable subjects.")
                                     .font(.headline)
                                     .foregroundColor(.gray)
+                                    .fixedSize(horizontal: false, vertical: true) // Allow vertical growth
                             }
                             .padding(.horizontal)
                             .padding(.top, 40)
+                            .frame(maxWidth: .infinity, alignment: .leading) // Ensure full width
                             .background(Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
-                                .opacity(geo.frame(in: .global).minY <= 0 ? 1 : 0))                             
-                            .offset(y: geo.frame(in: .global).minY <= 0 ? -geo.frame(in: .global).minY : 0) // Make it sticky
-                            .zIndex(1) // Keep the title on top
+                                .opacity(geo.frame(in: .global).minY <= 0 ? 1 : 0))
+                            .offset(y: geo.frame(in: .global).minY <= 0 ? -geo.frame(in: .global).minY : 0)
+                            .zIndex(1)
                         }
-                        .frame(height: 120) // Set height of the sticky header
-                        
+                        .frame(height: 140) // Increased height to accommodate wrapped text
+
                         // Rest of the scrollable content
                         VStack(spacing: 20) {
                             departmentView(title: "English & Literature", icon: "book.fill", subjects: [

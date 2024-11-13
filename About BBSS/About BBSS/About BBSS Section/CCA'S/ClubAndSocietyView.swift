@@ -65,7 +65,6 @@ struct ClubAndSocietyView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .navigationBarHidden(true)
         }
     }
     

@@ -60,7 +60,6 @@ struct SportsView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure VStack takes up full height
             }
-            .navigationBarHidden(true) // Hide the navigation bar for a cleaner look
         }
     }
     

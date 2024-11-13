@@ -10,104 +10,136 @@ struct ContentView: View {
                 Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
                 
-                VStack {
-                    NavigationLink(destination:propoganda()){
-                        Image("BBSS")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300, height: 300)
-                            .padding(.top, 50)
-                            .shadow(radius: 20)
-                    }
-                    
-                    Spacer()
-                    
-                    HStack(spacing: 20) { // Reduced space between buttons
-                        Spacer()
-                        
-                        NavigationLink(destination: AboutBBSSView()) {
-                            Text("About BBSS")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(width: 300, height: 50) // Adjusted width and height for better size control
-                                .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                                .cornerRadius(20)
-                        }
-                        Spacer()
-                        NavigationLink(destination: HowToGetToBBSSView()) {
-                            Text("How to get to BBSS")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(width: 300, height: 50) // Matched width and height for consistency
-                                .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                                .cornerRadius(20)
-                        }
-                        Spacer()
-                        
-                    }
-                    .padding(.top, 20) // Added padding to top for better spacing
-                    
-                    Spacer()
-                    
-                    NavigationLink(destination: TriviaQuizView()) {
-                        
-                        //                    NavigationLink(destination: FeedBack()) {
-                        
-                        //                        Text("Feedback!")
-                        Text("Trivia Quiz")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 200, height: 50) // Adjusted button size for single button
-                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(20)
-                    }
-                    .padding(.bottom, 30)
-                    
-                    Spacer()
-                }
-                
-                VStack {
-                    Spacer()
-                    Text("Made by Saumil, Zenneth and Daivik")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    NavigationLink(destination:HackClubView()) {
-                        HStack {
-                            Text("A product of")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            HStack{
-                                Text("Hack Club BBSS")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.blue)
-                                Image("HC LOGO")
+                GeometryReader { geometry in
+                        VStack(spacing: geometry.size.height > 700 ? 20 : 10) {
+                            NavigationLink(destination: propoganda()) {
+                                Image("BBSS")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(maxWidth: 40)
+                                    .frame(width: min(geometry.size.width * 0.6, 300),
+                                           height: min(geometry.size.width * 0.6, 300))
+                                    .padding(.top, geometry.size.height > 700 ? 50 : 20)
+                                    .shadow(radius: 20)
                             }
+                            
+                            Spacer(minLength: geometry.size.height > 700 ? 20 : 10)
+                            
+                            if geometry.size.width > 500 {
+                                // Horizontal layout for wider screens
+                                HStack(spacing: 15) {
+                                    Spacer()
+                                    NavigationButtonView(title: "About BBSS", width: geometry.size.width * 0.4)
+                                    Spacer()
+                                    NavigationButtonView(title: "How to get to BBSS", width: geometry.size.width * 0.4)
+                                    Spacer()
+                                }
+                                
+                                NavigationLink(destination: TriviaQuizView()) {
+                                    Text("Trivia Quiz")
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                        .padding()
+                                        .frame(width: geometry.size.width * 0.5, height: 50) // Flexible width
+                                        .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                                        .cornerRadius(20)
+                                        .minimumScaleFactor(0.75)
+                                }
+                                .padding(.top, 10)
+                                
+                            } else {
+                                // Stacked layout for smaller screens with uniform button width
+                                VStack(spacing: 10) {
+                                    let buttonWidth = geometry.size.width * 0.8
+                                    NavigationButtonView(title: "About BBSS", width: buttonWidth)
+                                    NavigationButtonView(title: "How to get to BBSS", width: buttonWidth)
+                                    NavigationLink(destination: TriviaQuizView()) {
+                                        Text("Trivia Quiz")
+                                            .font(.title2)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.white)
+                                            .padding()
+                                            .frame(width: buttonWidth, height: 50)
+                                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                                            .cornerRadius(20)
+                                            .minimumScaleFactor(0.75)
+                                    }
+                                }
+                                .padding(.vertical, 10)
+                            }
+                            
+                            Spacer(minLength: geometry.size.height > 700 ? 20 : 10)
+                            
+                            VStack(alignment: .center, spacing: 5) { // Footer section
+                                Text("Made by Saumil, Zenneth and Daivik")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                    .minimumScaleFactor(0.5)
+                                NavigationLink(destination: HackClubView()) {
+                                    HStack {
+                                        Text("A product of")
+                                            .font(.headline)
+                                            .fontWeight(.bold)
+                                            .minimumScaleFactor(0.5)
+                                        HStack {
+                                            Text("Hack Club BBSS")
+                                                .font(.headline)
+                                                .fontWeight(.bold)
+                                                .foregroundStyle(.blue)
+                                                .minimumScaleFactor(0.5)
+                                            Image("HC LOGO")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(maxWidth: 30)
+                                        }
+                                    }
+                                }
+                            }
+                            .padding(.bottom, geometry.size.height > 700 ? 30 : 10)
                         }
-                    }
+                        .frame(width: geometry.size.width)
+                        .navigationBarTitleDisplayMode(.inline)
+                    
                 }
             }
-            //            .navigationTitle("Main Page")
         }
         .foregroundColor(.black)
         .environmentObject(navigationManager)
     }
 }
 
-#Preview{
-    ContentView()
+struct NavigationButtonView: View {
+    let title: String
+    let width: CGFloat
+    
+    var body: some View {
+        NavigationLink(destination: destinationView(for: title)) {
+            Text(title)
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding()
+                .frame(width: width, height: 50)
+                .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                .cornerRadius(20)
+                .minimumScaleFactor(0.75)
+        }
+    }
+    
+    @ViewBuilder
+    func destinationView(for title: String) -> some View {
+        switch title {
+        case "About BBSS":
+            AboutBBSSView()
+        case "How to get to BBSS":
+            HowToGetToBBSSView()
+        default:
+            EmptyView()
+        }
+    }
 }
 
-
+// Additional views remain unchanged
 
 struct propoganda: View {
     var body: some View {
@@ -119,12 +151,11 @@ struct propoganda: View {
                 WebView(url: URL(string:"https://www.moe.gov.sg/schoolfinder/schooldetail?schoolname=bukit-batok-secondary-school")!)
             }
             .navigationTitle("BBSS")
-            .foregroundColor(Color.black)
             .navigationBarTitleDisplayMode(.inline)
+            .foregroundColor(Color.black)
         }
     }
 }
-
 
 struct FeedBack: View {
     var body: some View {
@@ -136,8 +167,12 @@ struct FeedBack: View {
                 WebView(url: URL(string:"https://docs.google.com/forms/d/11EIaaQngAFi9lIY8X2p1YzdfFGoUKArIyZZ4KjiaI3c/viewform")!)
             }
             .navigationTitle("BBSS")
-            .foregroundColor(Color.black)
             .navigationBarTitleDisplayMode(.inline)
+            .foregroundColor(Color.black)
         }
     }
+}
+
+#Preview{
+    ContentView()
 }

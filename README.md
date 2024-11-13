@@ -21,6 +21,11 @@ Also a product of BBSS Hack Club.
 https://apps.apple.com/us/app/about-bbss/id6737804170
 
 video recording demo! https://cloud-3guiih2k1-hack-club-bot.vercel.app/0screen_recording_2024-11-12_at_1.33.56___pm.mp4
+
+
+
+demo 2 https://cloud-m8jue274w-hack-club-bot.vercel.app/0screen_recording_2024-11-13_at_10.41.06___pm__online-video-cutter.com_.mp4
+
 # Repo Layout
 
 ```plaintext
@@ -39,6 +44,6 @@ Propoganda/
 ├── screenshot1.png
 ├── screenshot2.png
 ├── screenshot3.png
-├── screenshot4.png
+├── screenshot4.png         # screenshot names changed 👍
 ├── screenshot5.png    #screenshots are abit old and adding new ones nuked my local repo so i am not perusing it
 └── .DS_Store

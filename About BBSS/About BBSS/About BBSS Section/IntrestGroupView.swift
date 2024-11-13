@@ -184,14 +184,14 @@ struct IntrestGroupView: View {
                             title: "Hack Club BBSS",
                             description: "Take an idea you're interested in and bring it to Life. Empowering BBSS-ions with technology since 2024. Click here to view our website!",
                             imageName: "logo-Photoroom",
-                            websiteURL: "https://dev.bbsshack.club/"
+                            websiteURL: "https://bbsshack.club/"
                         )
                         
                         InterestCard(
                             title: "Dikir Barat",
                             description: "Dikir Barat is a traditional Malaysian musical and performance art form, often involving a seated chorus and a lead vocalist (tukang karut)...",
-                            imageName: "",
-                            websiteURL: "https://www.bukitbatoksec.moe.edu.sg/"
+                            imageName: "dikir",
+                            websiteURL: "https://drive.google.com/file/d/15myOdJKjrV9kofCXfVxV-S7kfPxQtTGg/view?usp=sharing"
                         )
                         
 //                        InterestCard(

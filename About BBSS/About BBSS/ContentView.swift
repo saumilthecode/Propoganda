@@ -164,7 +164,7 @@ struct FeedBack: View {
                 Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
                 
-                WebView(url: URL(string:"https://docs.google.com/forms/d/11EIaaQngAFi9lIY8X2p1YzdfFGoUKArIyZZ4KjiaI3c/viewform")!)
+                WebView(url: URL(string:"https://docs.google.com/forms/d/e/1FAIpQLSf-YQpx0Oty2MEcLntSK_O-YLbiF3XiUMGPjEdEDcsTfiFN3Q/viewform?embedded=true")!)
             }
             .navigationTitle("BBSS")
             .navigationBarTitleDisplayMode(.inline)

@@ -4,6 +4,7 @@ struct ScoreView: View {
     var questionsCorrect: Int
     let totalQuestions = 9
     @Environment(\.dismiss) var dismiss
+    @Environment(\.horizontalSizeClass) var sizeClass
     @EnvironmentObject var navigationManager: NavigationManager
     
     var scorePercentage: Int {
@@ -11,51 +12,61 @@ struct ScoreView: View {
     }
     
     var body: some View {
-        VStack(spacing: 40) {
-            Spacer()
-            Text("Quiz Completed!")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top, 20)
+        ZStack {
+            // Match your app's background color
+            Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
+                .ignoresSafeArea()
             
-            Text("You answered \(questionsCorrect) out of \(totalQuestions) questions correctly.")
-                .font(.title2)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-            
-            ProgressView(value: Double(questionsCorrect), total: Double(totalQuestions))
-                .progressViewStyle(LinearProgressViewStyle(tint: .green))
-                .scaleEffect(x: 1, y: 4, anchor: .center)
-                .padding(.horizontal, 40)
-            
-            Text(motivationalMessage())
-                .font(.headline)
-                .foregroundColor(.gray)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 30)
-            
-            Button(action: {
-                navigationManager.navigateToContentView()
-                dismiss()
-            }) {
-                Text("Close")
-                    .font(.headline)
-                    .foregroundColor(.white)
+            GeometryReader { geometry in
+                ScrollView {
+                    VStack(spacing: geometry.size.height * 0.04) {
+                        Spacer()
+                            .frame(height: geometry.size.height * 0.05)
+                        
+                        Text("Quiz Completed!")
+                            .font(geometry.size.width < 500 ? .title : .largeTitle)
+                            .fontWeight(.bold)
+                        
+                        Text("You answered \(questionsCorrect) out of \(totalQuestions) questions correctly.")
+                            .font(geometry.size.width < 500 ? .body : .title2)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                        
+                        // Progress bar using your app's color scheme
+                        ProgressView(value: Double(questionsCorrect), total: Double(totalQuestions))
+                            .progressViewStyle(LinearProgressViewStyle(tint: Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0))))
+                            .scaleEffect(x: 1, y: 4, anchor: .center)
+                            .padding(.horizontal, geometry.size.width * 0.1)
+                        
+                        Text(motivationalMessage())
+                            .font(geometry.size.width < 500 ? .subheadline : .headline)
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, geometry.size.width * 0.08)
+                        
+                        VStack(spacing: 15) {
+                            
+                            // Feedback button
+                            NavigationLink(destination: FeedBack()) {
+                                Text("Give Feedback")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .frame(width: geometry.size.width * 0.8, height: 50)
+                                    .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                                    .cornerRadius(20)
+                            }
+                        }
+                        .padding(.top, geometry.size.height * 0.02)
+                        
+                        Spacer()
+                            .frame(height: geometry.size.height * 0.05)
+                    }
+                    .frame(minHeight: geometry.size.height)
                     .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
+                }
             }
-            .padding(.horizontal, 40)
-            Spacer()
-            
         }
-        .padding()
-        .background(Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0)))
-        .cornerRadius(20)
-        .shadow(radius: 10)
-        .padding(20)
     }
     
     private func motivationalMessage() -> String {
@@ -72,6 +83,9 @@ struct ScoreView: View {
     }
 }
 
-#Preview{
-    ScoreView(questionsCorrect: 9)
+struct ScoreView_Previews: PreviewProvider {
+    static var previews: some View {
+        ScoreView(questionsCorrect: 9)
+            .environmentObject(NavigationManager())
+    }
 }

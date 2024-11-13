@@ -21,103 +21,88 @@ struct QuizView: View {
     @State var correctAnswers = Int(0)
     @State var selectedAnswer = Int(0)
     @State var isCorrect = Bool(false)
-    @State private var showingSheet = false
     @State private var showingFeedback = false
+    @State private var navigateToScore = false
     @EnvironmentObject var navigationManager: NavigationManager
     
     var body: some View {
-        ZStack {
-            Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                VStack {
-                    ProgressView(value: Progress, total: 9)
-                        .progressViewStyle(.linear)
-                        .tint(.blue)
-                        .scaleEffect(x: 0.8, y: 0.3)
-                        .padding()
-                        .offset(y: -200)
+        NavigationStack {
+            GeometryReader { geometry in
+                ZStack {
+                    Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
+                        .edgesIgnoringSafeArea(.all)
                     
-                    Text("You are \(QuestionsDone) / 9 questions done")
-                        .bold()
-                        .italic()
-                        .offset(y: -400)
-                        .padding(50)
-                }
-                
-                Text(questions[questionIndex].Question)
-                    .font(.title2)
-                    .bold()
-                    .padding()
-                    .offset(y: -100)
-                
-                HStack(spacing: 20) {
-                    Button(action: {
-                        selectedAnswer = 1
-                        handleAnswer()
-                    }) {
-                        Text(questions[questionIndex].Option1)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(10)
-                    }
-                    
-                    Button(action: {
-                        selectedAnswer = 2
-                        handleAnswer()
-                    }) {
-                        Text(questions[questionIndex].Option2)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(10)
-                    }
-                }
-                .offset(y: -50)
-                
-                HStack(spacing: 20) {
-                    Button(action: {
-                        selectedAnswer = 3
-                        handleAnswer()
-                    }) {
-                        Text(questions[questionIndex].Option3)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(10)
-                    }
-                    
-                    Button(action: {
-                        selectedAnswer = 4
-                        handleAnswer()
-                    }) {
-                        Text(questions[questionIndex].Option4)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-                            .cornerRadius(10)
+                    ScrollView {
+                        VStack(spacing: geometry.size.height * 0.02) {
+                            // Progress section
+                            VStack {
+                                ProgressView(value: Progress, total: 9)
+                                    .progressViewStyle(.linear)
+                                    .tint(.blue)
+                                    .scaleEffect(x: 1, y: 2)
+                                    .padding(.horizontal)
+                                
+                                Text("You are \(QuestionsDone) / 9 questions done")
+                                    .bold()
+                                    .italic()
+                                    .padding(.top, 8)
+                            }
+                            .padding(.top, geometry.size.height * 0.05)
+                            
+                            // Question section
+                            Text(questions[questionIndex].Question)
+                                .font(.system(size: min(geometry.size.width * 0.05, 24)))
+                                .bold()
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .frame(minHeight: geometry.size.height * 0.15)
+                            
+                            // Options section
+                            VStack(spacing: geometry.size.height * 0.02) {
+                                // First row of options
+                                OptionsRow(
+                                    option1: questions[questionIndex].Option1,
+                                    option2: questions[questionIndex].Option2,
+                                    action1: { selectAnswer(1) },
+                                    action2: { selectAnswer(2) },
+                                    geometry: geometry
+                                )
+                                
+                                // Second row of options
+                                OptionsRow(
+                                    option1: questions[questionIndex].Option3,
+                                    option2: questions[questionIndex].Option4,
+                                    action1: { selectAnswer(3) },
+                                    action2: { selectAnswer(4) },
+                                    geometry: geometry
+                                )
+                            }
+                            .padding(.horizontal)
+                        }
+                        .padding(.bottom, geometry.size.height * 0.05)
                     }
                 }
-                .offset(y: 0)
-                
-            }
-            .sheet(isPresented: $showingSheet) {
-                ScoreView(questionsCorrect: correctAnswers)  // Pass correct answers to ScoreView
-                    .environmentObject(navigationManager)
-            }
-            .alert(isPresented: $showingFeedback) {
-                Alert(
-                    title: Text(isCorrect ? "Correct!" : "Incorrect"),
-                    message: Text(isCorrect ? "You got it right!" : "The correct answer is \(questions[questionIndex].plainTextAnswer)"),
-                    dismissButton: .default(Text("Next Question"), action: moveToNextQuestion)
-                )
+                .navigationDestination(isPresented: $navigateToScore) {
+                    ScoreView(questionsCorrect: correctAnswers)
+                        .environmentObject(navigationManager)
+                }
+                .alert(isPresented: $showingFeedback) {
+                    Alert(
+                        title: Text(isCorrect ? "Correct!" : "Incorrect"),
+                        message: Text(isCorrect ? "You got it right!" : "The correct answer is \(questions[questionIndex].plainTextAnswer)"),
+                        dismissButton: .default(Text("Next Question"), action: moveToNextQuestion)
+                    )
+                }
             }
         }
         .onAppear {
             Progress = Double(QuestionsDone)
         }
+    }
+    
+    private func selectAnswer(_ answer: Int) {
+        selectedAnswer = answer
+        handleAnswer()
     }
     
     private func handleAnswer() {
@@ -132,7 +117,7 @@ struct QuizView: View {
     private func moveToNextQuestion() {
         QuestionsDone += 1
         if QuestionsDone == questions.count {
-            showingSheet = true
+            navigateToScore = true
         } else {
             questionIndex = (questionIndex + 1) % questions.count
             Progress = Double(QuestionsDone)
@@ -140,6 +125,43 @@ struct QuizView: View {
         }
     }
 }
+
+// Helper view for option buttons
+struct OptionsRow: View {
+    let option1: String
+    let option2: String
+    let action1: () -> Void
+    let action2: () -> Void
+    let geometry: GeometryProxy
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            OptionButton(text: option1, action: action1, geometry: geometry)
+            OptionButton(text: option2, action: action2, geometry: geometry)
+        }
+    }
+}
+
+// Reusable option button
+struct OptionButton: View {
+    let text: String
+    let action: () -> Void
+    let geometry: GeometryProxy
+    
+    var body: some View {
+        Button(action: action) {
+            Text(text)
+                .font(.system(size: min(geometry.size.width * 0.035, 16)))
+                .foregroundColor(.white)
+                .padding()
+                .frame(minWidth: geometry.size.width * 0.4)
+                .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                .cornerRadius(10)
+                .multilineTextAlignment(.center)
+        }
+    }
+}
+
 #Preview {
     QuizView()
 }

@@ -14,14 +14,18 @@ struct WebView: UIViewRepresentable {
     }
 }
 
-
 struct ClubAndSocietyView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
                     .ignoresSafeArea()
-                VStack(spacing: 30) {
+                
+                VStack {
+                    Spacer()
+                    
                     Text("Clubs and Societies")
                         .font(.largeTitle)
                         .bold()
@@ -29,45 +33,55 @@ struct ClubAndSocietyView: View {
                         .padding(.top, 40)
                         .foregroundColor(Color.black)
                     
-                    HStack(spacing: 20) {
-                        NavigationLink(destination: MediaClubView()) {
-                            ClubButton(title: "Media Club")
+                    Spacer(minLength: 20)
+                    
+                    // Use a ScrollView for compact (iPhone) and grid layout for larger screens (iPad)
+                    if horizontalSizeClass == .compact {
+                        ScrollView {
+                            VStack(spacing: 20) {
+                                clubButton(title: "Media Club", destination: AnyView(MediaClubView()))
+                                clubButton(title: "Robotics Club", destination: AnyView(RoboticsClubView()))
+                                clubButton(title: "One Earth Club", destination: AnyView(OneEarthClubView()))
+                                clubButton(title: "Gym Club", destination: AnyView(GymView()))
+                            }
+                            .padding(.horizontal, 20)
                         }
-                        NavigationLink(destination: RoboticsClubView()) {
-                            ClubButton(title: "Robotics Club")
+                    } else {
+                        // 2x2 grid for larger screens (iPads)
+                        VStack(spacing: 20) {
+                            HStack(spacing: 20) {
+                                clubButton(title: "Media Club", destination: AnyView(MediaClubView()))
+                                clubButton(title: "Robotics Club", destination: AnyView(RoboticsClubView()))
+                            }
+                            HStack(spacing: 20) {
+                                clubButton(title: "One Earth Club", destination: AnyView(OneEarthClubView()))
+                                clubButton(title: "Gym Club", destination: AnyView(GymView()))
+                            }
                         }
-                    }
-                    HStack(spacing: 20) {
-                        NavigationLink(destination: OneEarthClubView()) {
-                            ClubButton(title: "One Earth Club")
-                        }
-                        NavigationLink(destination: GymView()){
-                            ClubButton(title: "Gym Club")
-                            
-                        }
-                        
+                        .padding(.horizontal, 40) // Padding for the grid layout
                     }
                     
-                    
+                    Spacer()
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            .navigationBarHidden(true)
         }
     }
-}
-
-struct ClubButton: View {
-    var title: String
     
-    var body: some View {
-        Text(title)
-            .font(.title2)
-            .fontWeight(.bold)
-            .foregroundColor(.white)
-            .padding(25)
-            .frame(maxWidth: .infinity)
-            .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
-            .cornerRadius(30)
-            .padding(.horizontal)
+    // Reusable Club Button
+    private func clubButton(title: String, destination: AnyView) -> some View {
+        NavigationLink(destination: destination) {
+            Text(title)
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding(25)
+                .frame(maxWidth: .infinity) // Ensure the button expands to fill the available width
+                .background(Color(UIColor(red: 152/255, green: 29/255, blue: 32/255, alpha: 1.0)))
+                .cornerRadius(30)
+        }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -119,23 +133,6 @@ struct OneEarthClubView: View {
     }
 }
 
-struct DramaAndDebateView: View {
-    var body: some View {
-        NavigationStack {
-            ZStack {
-                Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
-                    .ignoresSafeArea()
-                
-                WebView(url: URL(string: "https://docs.google.com/presentation/d/1mVCVulEWlPL6hNHOzVXMC9U5hO6R8WNOw4vXWfYGeps/pub?start=true&loop=true&delayms=3000")!)
-            }
-            .navigationTitle("ELDDS Presentation")
-            .foregroundColor(Color.black)
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-}
-
-
 struct GymView: View {
     var body: some View {
         NavigationStack {
@@ -145,12 +142,13 @@ struct GymView: View {
                 
                 WebView(url: URL(string: "https://www.bukitbatoksec.moe.edu.sg/clubs/gym-club/")!)
             }
-            .navigationTitle("Robotics Club Website")
+            .navigationTitle("Gym Club Website")
             .foregroundColor(Color.black)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
-
-
+#Preview {
+    ClubAndSocietyView()
+}

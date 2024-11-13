@@ -10,8 +10,9 @@ struct CCAView: View {
                     .ignoresSafeArea()
                 
                 VStack {
-                    // Spacer between the top and "CCA's"
+                    // Spacer with a fixed height to add space at the top
                     Spacer()
+                        .frame(height: 60) // Adjust the height as needed
                     
                     Text("CCA'S")
                         .font(.title)
@@ -24,7 +25,6 @@ struct CCAView: View {
                     // Check if the device is in compact mode (e.g., iPhones)
                     if horizontalSizeClass == .compact {
                         // For compact screens (iPhones), use a ScrollView with single-column layout
-                        ScrollView {
                             VStack(spacing: 15) {
                                 programmeButton(title: "Sports & Games", destination: AnyView(SportsView()))
                                 programmeButton(title: "Uniformed Groups", destination: AnyView(UniformedGroupsView()))
@@ -32,7 +32,7 @@ struct CCAView: View {
                                 programmeButton(title: "Clubs and Societies", destination: AnyView(ClubAndSocietyView()))
                             }
                             .padding(.horizontal, 10) // Padding around buttons
-                        }
+                        
                     } else {
                         // For regular (iPads) and larger screens, use a 2x2 grid layout
                         VStack(spacing: 20) {

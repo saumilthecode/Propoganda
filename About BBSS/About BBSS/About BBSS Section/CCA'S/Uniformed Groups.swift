@@ -25,7 +25,6 @@ struct UniformedGroupsView: View {
                     // Check if the device is in compact mode (e.g., iPhones)
                     if horizontalSizeClass == .compact {
                         // For compact screens (iPhones), use a ScrollView with single-column layout
-                        ScrollView {
                             VStack(spacing: 15) {
                                 programmeButton(title: "NCC (Land) + NCC (Sea)", destination: AnyView(NCCLandView()))
                                 programmeButton(title: "NCC (Land) + NCC (Sea)", destination: AnyView(NCCSeaView()))
@@ -34,7 +33,7 @@ struct UniformedGroupsView: View {
                                 programmeButton(title: "NPCC", destination: AnyView(NPCCView()))
                             }
                             .padding(.horizontal, 10) // Padding around buttons
-                        }
+                        
                     } else {
                         // For regular (iPads) and larger screens, use a 2x2 grid layout
                         VStack(spacing: 20) {

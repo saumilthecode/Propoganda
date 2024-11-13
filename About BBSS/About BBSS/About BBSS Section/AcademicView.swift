@@ -26,8 +26,7 @@ struct AcademicView: View {
                             .padding(.horizontal)
                             .padding(.top, 40)
                             .background(Color(UIColor(red: 250/255, green: 240/255, blue: 180/255, alpha: 1.0))
-                                .opacity(geo.frame(in: .global).minY <= 0 ? 1 : 0)) // Background remains as content scrolls
-                            
+                                .opacity(geo.frame(in: .global).minY <= 0 ? 1 : 0))                             
                             .offset(y: geo.frame(in: .global).minY <= 0 ? -geo.frame(in: .global).minY : 0) // Make it sticky
                             .zIndex(1) // Keep the title on top
                         }
